@@ -1,0 +1,52 @@
+﻿@model FreelanceManagement.Models.Entities.Client
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Client</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>Name</th>
+            <th>Url</th>
+            <th></th>
+        </tr>
+
+        @foreach (var connector in Model.Connectors)
+        {
+            <tr>
+                <td>@connector.ConnectorType.Name</td>
+                <td>@connector.ConnectorType.Url</td>
+                <td></td>
+            </tr>
+        }
+    </table>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
